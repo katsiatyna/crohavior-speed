@@ -18,17 +18,10 @@ import org.apache.spark.streaming.api.java.JavaPairInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka.KafkaUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.elasticsearch.spark.rdd.api.java.JavaEsSpark;
 import org.elasticsearch.spark.streaming.api.java.JavaEsSparkStreaming;
 import scala.Tuple2;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -142,9 +135,9 @@ public class StreamingDemo {
                                gridBox.setRdd(coordinateIntegerJavaPairRDD.id());
                                gridBox.setTs(time.milliseconds());
                                //gridBox.put()
-                               gridBox.setLatitude(coordinate.getLatitude());
-                               gridBox.setLongitude(coordinate.getLongitude());
-                               gridBox.setCount(tuple._2());
+                               gridBox.setA(coordinate.getLatitude());
+                               gridBox.setO(coordinate.getLongitude());
+                               gridBox.setC(tuple._2());
                                return gridBox;
                            }
                        }
@@ -170,8 +163,8 @@ public class StreamingDemo {
                                 gridBox.put("rdd", coordinateIntegerJavaPairRDD.id());
                                 gridBox.put("ts", time.toString().split(" ")[0]);
                                 //gridBox.put()
-                                gridBox.put("latitude", coordinate.getLatitude());
-                                gridBox.put("longitude", coordinate.getLongitude());
+                                gridBox.put("latitude", coordinate.getA());
+                                gridBox.put("longitude", coordinate.getO());
                                 gridBox.put("count", tuple._2());
                                 return gridBox;
                             }

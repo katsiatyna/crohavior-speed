@@ -9,9 +9,9 @@ public class EsRecord implements Serializable{
     private String type;
     private int rdd;
     private long ts ;
-    private double latitude;
-    private double longitude;
-    private int count;
+    private double a;
+    private double o;
+    private int c;
 
     public String getType() {
         return type;
@@ -37,27 +37,27 @@ public class EsRecord implements Serializable{
         this.ts = ts;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public double getA() {
+        return a;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setA(double a) {
+        this.a = a;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public double getO() {
+        return o;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setO(double o) {
+        this.o = o;
     }
 
-    public int getCount() {
-        return count;
+    public int getC() {
+        return c;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setC(int c) {
+        this.c = c;
     }
 }
