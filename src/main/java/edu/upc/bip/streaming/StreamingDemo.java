@@ -99,7 +99,7 @@ public class StreamingDemo {
                         return a + b;
                     }
                 },
-        new Duration(10000));
+        new Duration(10000), new Duration(10000));
 
         JavaPairDStream<Coordinate, Integer> counts15Sec = pairs.reduceByKeyAndWindow(
                 new Function2<Integer, Integer, Integer>() {
@@ -108,7 +108,7 @@ public class StreamingDemo {
                         return a + b;
                     }
                 },
-                new Duration(15000));
+                new Duration(15000), new Duration(15000));
 
         writeJson(counts5Sec,objectMapper, "5");
         writeJson(counts10Sec,objectMapper, "10");
