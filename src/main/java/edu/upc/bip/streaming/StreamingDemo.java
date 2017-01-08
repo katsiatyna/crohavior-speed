@@ -31,8 +31,8 @@ import java.util.regex.Pattern;
 public class StreamingDemo {
 
     private static final Pattern SPACE = Pattern.compile(",");
-    private static final Integer LAT = 2;
-    private static final Integer LONG = 3;
+    private static final Integer LAT = 0;
+    private static final Integer LONG = 1;
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static void main(String[] args) throws Exception {
@@ -65,9 +65,9 @@ public class StreamingDemo {
                 new Function<String, Transaction>() {
                     @Override
                     public Transaction call(String row) throws Exception {
-                        String[] words = row.split(",");
-                        Double latitude = (double)(5 * Math.round(Double.parseDouble(words[LAT]) * 100) / 5) / 100;
-                        Double longitude = (double)(5 * Math.round(Double.parseDouble(words[LONG]) * 100) / 5) / 100;
+                        String[] words = row.split(";");
+                        Double latitude = (double)(5 * Math.round(Double.parseDouble(words[LAT]) * 10000) / 5) / 10000;
+                        Double longitude = (double)(5 * Math.round(Double.parseDouble(words[LONG]) * 10000) / 5) / 10000;
                         Coordinate coordinate = new Coordinate(latitude, longitude);
                         return new Transaction(coordinate);
                     }
